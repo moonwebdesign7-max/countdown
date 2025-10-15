@@ -26,7 +26,9 @@
   </div>
 
   <script>
+    // Postavljeno na 06.12.2025 u 00:00:00
     const countdownDate = new Date("Dec 6, 2025 00:00:00").getTime();
+
     const updateSpan = (id, value) => {
       const span = document.getElementById(id);
       if (span.textContent !== value) {
@@ -51,9 +53,4 @@
 
       if (distance < 0) {
         clearInterval(timer);
-        document.getElementById("timer").textContent = "EXPIRED";
-      }
-    }, 1000);
-  </script>
-</body>
-</html>
+        document.getElementById("timer").textContent = "E
