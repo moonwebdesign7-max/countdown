@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="sr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Countdown do 06.12.2025</title>
+  <style>
+    html,body {
+      height: 100%;
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #f8f5f2;
+      color: #222;
+    }
+    .countdown {
+      display: flex;
+      gap: 16px;
+      text-align: center;
+      font-size: 24px;
+    }
+    .unit {
+      background: #fff;
+      padding: 16px 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .number {
+      font-size: 40px;
+      font-weight: 700;
+      display: block;
+    }
+    .label {
+      font-size: 14px;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <div class="countdown">
+    <div class="unit">
+      <span class="number" id="days">--</span>
+      <span class="label">DANA</span>
+    </div>
+    <div class="unit">
+      <span class="number" id="hours">--</span>
+      <span class="label">SATI</span>
+    </div>
+    <div class="unit">
+      <span class="number" id="minutes">--</span>
+      <span class="label">MIN</span>
+    </div>
+    <div class="unit">
+      <span class="number" id="seconds">--</span>
+      <span class="label">SEK</span>
+    </div>
+  </div>
+
+  <script>
+    // Ciljni datum (06.12.2025 u ponoć po beogradskom vremenu)
+    const target = new Date("2025-12-06T00:00:00+01:00").getTime();
+
+    function updateCountdown() {
+      const now = Date.now();
+      let diff = target - now;
+      if (diff < 0) diff = 0;
+
+      const sec = Math.floor(diff / 1000) % 60;
+      const min = Math.floor(diff / (1000 * 60)) % 60;
+      const hr  = Math.floor(diff / (1000 * 60 * 60)) % 24;
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+
+      document.getElementById("days").textContent = days;
+      document.getElementById("hours").textContent = String(hr).padStart(2, "0");
+      document.getElementById("minutes").textContent = String(min).padStart(2, "0");
+      document.getElementById("seconds").textContent = String(sec).padStart(2, "0");
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+</body>
+</html>
